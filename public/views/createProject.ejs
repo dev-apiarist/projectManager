@@ -1,0 +1,27 @@
+<%- include('partials/~header.ejs') %>
+
+<form action="/project/add%>" method="post">
+  <legend>Project Edit Form</legend>
+  <label>
+    <span>Project Title</span>
+    <input type="text" name="project_title" />
+  </label>
+  <label>
+    <span>Project Description</span>
+    <textarea name="project_description"></textarea>
+  </label>
+  <label>
+    <span>Project Title</span>
+    <input type="date" name="project_start_dt" />
+  </label>
+  <label>
+    <span>Project Title</span>
+    <input type="date" name="project_due_dt" />
+  </label>
+
+  <div class="">
+    <button type="submit">Create Project</button>
+  </div>
+</form>
+
+<%- include('partials/~footer.ejs') %>

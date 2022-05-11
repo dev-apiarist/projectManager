@@ -1,0 +1,25 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: .9em;
+}
+.projectTable{
+    color: darkgreen;
+    border: 1px solid lightgrey;
+    border-collapse: collapse;
+}
+th,td{
+    border: 1px lightgrey solid;
+    padding: 10px;
+}
+.options{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+    height: 20px;
+    width: 20px;
+    transition: transform 300ms ease-in-out;
+}
+img:hover{
+    transform: scale(1.1);
+}

@@ -1,0 +1,63 @@
+<%- include('partials/~header.ejs') %>
+<!-- Main Block -->
+
+<h1>Project table</h1>
+<table class="projectTable">
+  <thead>
+    <th>Project ID</th>
+    <th>Project Name</th>
+    <th>Description</th>
+    <th>Start Date</th>
+    <th>Due Date</th>
+    <th>Options</th>
+    <th>Additional Notes</th>
+  </thead>
+  <tbody>
+    <% projects.forEach((project)=>{ %>
+    <tr class="project">
+      <td class="projectId"><%= project.projects_id %></td>
+      <td class="projectTitle"><%= project.project_title %></td>
+      <td><%= project.project_description %></td>
+      <td><%= project.project_start_dt.toDateString() %></td>
+      <td><%= project.project_due_dt.toDateString() %></td>
+      <td class="options">
+        <a href="project/<%= project.projects_id %>">
+          <img src="assets/edit-icon.svg" alt="Image of the edit icon" />
+        </a>
+        <a class="delBtn" data-projectId="<%= project.projects_id %>">
+          <img src="assets/delete-icon.svg" alt="Image of the delete icon" />
+        </a>
+      </td>
+      <td>
+        <a href="/project/<%= project.projects_id %>/notes">Additional Notes</a>
+      </td>
+    </tr>
+    <% }) %>
+    <tr>
+      <td colspan="6"><a href="/project/add">Create Project</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Main Block -->
+
+<script>
+  let projects = document.querySelectorAll(".project");
+
+  projects.forEach((project) => {
+    let delBtn = project.querySelector(".delBtn");
+    console.log(delBtn);
+    let projectId = project.querySelector(".projectId").innerHTML;
+    let projectTitle = project.querySelector(".projectTitle").innerHTML;
+    delBtn.addEventListener("click", () => {
+      if (
+        confirm(
+          "Are you sure you want to delete this project \n" + projectTitle
+        )
+      ) {
+        window.location.href = `project/delete/${projectId}`;
+      }
+    });
+  });
+</script>
+<%- include('partials/~footer.ejs') %>

@@ -1,0 +1,41 @@
+<%- include('partials/~header.ejs') %>
+
+<form action="/project/<%= project.projects_id %>" method="post">
+  <legend>Project Edit Form</legend>
+  <label>
+    <span>Project Title</span>
+    <input
+      type="text"
+      name="project_title"
+      value="<%= project.project_title %>"
+    />
+  </label>
+  <label>
+    <span>Project Description</span>
+    <textarea name="project_description">
+<%= project.project_description %></textarea
+    >
+  </label>
+  <label>
+    <span>Project Title</span>
+    <input
+      type="date"
+      name="project_start_dt"
+      value="<%= dateParser(project.project_start_dt) %>"
+    />
+  </label>
+  <label>
+    <span>Project Title</span>
+    <input
+      type="date"
+      name="project_due_dt"
+      value="<%= dateParser(project.project_due_dt) %>"
+    />
+  </label>
+
+  <div class="">
+    <button type="submit">Update Project</button>
+  </div>
+</form>
+
+<%- include('partials/~footer.ejs') %>

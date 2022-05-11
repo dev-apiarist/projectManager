@@ -1,0 +1,60 @@
+<%- include('partials/~header.ejs') %>
+<!-- Main Block -->
+
+<h1>Notes table</h1>
+<table class="projectTable">
+    <thead>
+        <th>Note ID</th>
+        <th>Note</th>
+        <th>Created Date</th>
+        <th>Options</th>
+        
+        
+    </thead>
+    <tbody>
+        <% notes.forEach((note)=>{ %>
+            <tr class="notes">
+                
+                <td class="noteId" data-projectid="<%= note.project_id %>"><%= note.id %></td>
+                <td class="noteTitle"><%= notes.note %></td>
+                <td><%= note.active_date.toDateString() %></td>
+                <td class="options">
+                    <a href="/project/<%= projectID %>/note/<%= notes.id %>">
+                        <img src="/assets/edit-icon.svg" alt="Image of the edit icon">
+                    </a>
+                    <a class="delBtn">
+                        <img src="/assets/delete-icon.svg" alt="Image of the delete icon">
+                    </a>
+                </td>
+            </tr>
+        <% }) %>
+        <tr>
+            <td colspan="6"><a href="/project/<%= projectID %>/note/add">Create note</a></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Main Block -->
+
+<script>
+
+    let notes = document.querySelectorAll(".notes");
+
+    notes.forEach((note)=>{
+        let delBtn = note.querySelector(".delBtn");
+        console.log(delBtn);
+        let noteCell = note.querySelector(".noteId");
+        let projectID = noteCell.dataset.projectid;
+        let noteId = noteCell.innerHTML;
+        let noteTitle = note.querySelector(".noteTitle").innerHTML;
+        delBtn.addEventListener("click",()=>{
+        if(confirm("Are you sure you want to delete this project \n"+ noteTitle)){
+            window.location.href = `/project/${projectID}/note/${noteId}/delete`;
+        }
+
+        })
+    })
+
+</script>
+<%- include('partials/~footer.ejs') %>

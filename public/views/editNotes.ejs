@@ -1,0 +1,21 @@
+<%- include('partials/~header.ejs') %>
+
+
+<form action="/project/<%= projectID %>/note/<%= note.id %>" method="post">
+    <legend>Note Edit Form</legend>
+        <span>Project Description</span>
+        <textarea  name="note"><%= note.note %></textarea>
+    </label>
+    <label>
+        <span>Project Title</span>
+        <input type="date" name="active_date" value="<%= dateParser(note.active_date) %>">
+    </label>
+    <label>
+    <div class="">
+        <button type="submit">Update Note</button>
+    </div>
+
+</form>
+
+
+<%- include('partials/~footer.ejs') %>
